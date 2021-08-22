@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package chat;
+
+import "google/protobuf/empty.proto";
+
+// The chat tool service definition.
+service ChatServer {
+  rpc sendMessage (Letter) returns (google.protobuf.Empty) {}
+  rpc receiveMessage (google.protobuf.Empty) returns (stream Letter) {}
+}
+
+// The chat letter containing the client's name and text
+message Letter {
+  string name = 1;
+  string text = 2;
+}
